@@ -18,4 +18,21 @@ jobs:
       - name: install dependencies
         run: npm install
       - name: run tests
-        run: npm test
+        run: npm test 
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: get code
+        uses: actions/checkout@v4
+      - name: install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: install dependencies
+        run: npm install
+      - name: build project
+        run: npm run build
+      - name: deploy to GitHub Pages
+        run: echo "Deploying to GitHub Pages..."
+       

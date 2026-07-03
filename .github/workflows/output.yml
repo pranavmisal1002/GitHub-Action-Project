@@ -1,0 +1,12 @@
+name: Output Information
+on: workflow_run
+jobs:
+    info:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Get workflow run information
+              run: |
+                echo "Workflow Run ID: ${{ github.event.workflow_run.id }}"
+                echo "Workflow Run Name: ${{ github.event.workflow_run.name }}"
+                echo "Workflow Run Status: ${{ github.event.workflow_run.status }}"
+                echo "Workflow Run Conclusion: ${{ github.event.workflow_run.conclusion }}"
